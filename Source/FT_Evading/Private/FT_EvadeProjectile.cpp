@@ -43,6 +43,6 @@ void AFT_EvadeProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
 		// might need some fancy code here at some change
-		UE_LOG(LogTemp, Warning, TEXT("Projectile hit actor: %s | Component: %s"),*OtherActor->GetName(),*OtherComp->GetName());
+		//UE_LOG(LogTemp, Warning, TEXT("Projectile hit actor: %s | Component: %s"),*OtherActor->GetName(),*OtherComp->GetName());
 	}
 }
