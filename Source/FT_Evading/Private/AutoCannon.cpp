@@ -37,7 +37,7 @@ void AAutoCannon::Tick(float DeltaTime)
 void AAutoCannon::Shoot()
 {
 	// spawn a projectile and set its damage
-	FVector Location = GetActorLocation() + FVector(0.0f,50.0f,0.0f);
+	FVector Location = GetActorLocation() + GetActorForwardVector() * 200.f;
 	FRotator Rotation = GetActorRotation();
 	FActorSpawnParameters SpawnParams;
 	AFT_EvadeProjectile* Projectile = GetWorld()->SpawnActor<AFT_EvadeProjectile>(ProjectileToSpawn, Location, Rotation, SpawnParams);
