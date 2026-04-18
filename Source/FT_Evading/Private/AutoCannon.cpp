@@ -41,6 +41,6 @@ void AAutoCannon::Shoot()
 	FRotator Rotation = GetActorRotation();
 	FActorSpawnParameters SpawnParams;
 	AFT_EvadeProjectile* Projectile = GetWorld()->SpawnActor<AFT_EvadeProjectile>(ProjectileToSpawn, Location, Rotation, SpawnParams);
-	UE_LOG(LogTemp, Warning, TEXT("Pew Pew!"));
+	//UE_LOG(LogTemp, Warning, TEXT("Pew Pew!"));
 }
 

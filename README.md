@@ -7,12 +7,14 @@ In this project you will look at using collision layers to allow the player to t
 
 Since we are using a varient project some of the script for the character are in the platformer folder, the scripts we create will still be in the public folder in the source directory.
 ![Location of the scripts](Hints/Scripts.png)
+
 The primary Actors are in **Content->Varient_Platforming->Blueprints**
 -  **BP_Platforming character**, is unreals pre-built platformer with a double jump and dash ability, which we will modify. 
 - **My Auto Cannon**, this is the cannon prefab that will shoot projectiles that are a sub class of FT_Evading Projectile. 
 - **My FT_Evade Projectile**, the projectile that will hit the player.
 
 ![Location of blueprints](Hints/Blueprints.png)
+
 ## Task
 - Adjust the player and the projectiles collisions so if the player performs a dash they will pass throught the projectile
 ## Hints  
@@ -33,7 +35,7 @@ Test your might
 - Add a start shoot delay to the cannons so you can have cannons, start firing at different times (See **AutoCannon.cpp** for timer)
 - Add a rotation option so some spin when after shooting 
 ```
-Some basic rotational code
+AddActorLocalRotation(FRotator(0.f, 90.f, 0.f));
 ```
 
 ## Medium

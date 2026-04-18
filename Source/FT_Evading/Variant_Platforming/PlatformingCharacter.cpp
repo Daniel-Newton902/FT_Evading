@@ -275,6 +275,20 @@ void APlatformingCharacter::DoJumpEnd()
 	StopJumping();
 }
 
+
+// connah function, interupts and ends the dash immediately, used for things like knockback and stuns that should stop the dash in its tracks
+void APlatformingCharacter::InterruptDash()
+{
+	if(!bIsDashing)
+		return;
+	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+	if (AnimInstance && AnimInstance->Montage_IsPlaying(DashMontage))
+	{
+		AnimInstance->Montage_Stop(0.0f, DashMontage);
+		EndDash();
+	}
+}
+
 void APlatformingCharacter::DashMontageEnded(UAnimMontage* Montage, bool bInterrupted)
 {
 	// if the montage was interrupted, end the dash

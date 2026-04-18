@@ -3,6 +3,7 @@
 
 #include "FT_EvadeProjectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "PlatformingCharacter.h"
 #include "Components/SphereComponent.h"
 
 // Sets default values
@@ -28,7 +29,7 @@ AFT_EvadeProjectile::AFT_EvadeProjectile()
 	ProjectileMovement->MaxSpeed = 1000.f;
 	ProjectileMovement->ProjectileGravityScale = 0.f;
 	ProjectileMovement->bRotationFollowsVelocity = true;
-	ProjectileMovement->bShouldBounce = true;
+	ProjectileMovement->bShouldBounce = false;
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 10.0f;
@@ -43,6 +44,24 @@ void AFT_EvadeProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr))
 	{
 		// might need some fancy code here at some change
-		//UE_LOG(LogTemp, Warning, TEXT("Projectile hit actor: %s | Component: %s"),*OtherActor->GetName(),*OtherComp->GetName());
+		UE_LOG(LogTemp, Warning, TEXT("Projectile hit actor: %s | Component: %s"),*OtherActor->GetName(),*OtherComp->GetName());
+
+		// missed from video, but we should apply an impulse to the hit object if it simulates physics
+		// Apply impulse to the hit object in the direction of the projectile
+		if (APlatformingCharacter* Player = Cast<APlatformingCharacter>(OtherActor))
+		{
+			Player->InterruptDash();
+			FVector Knockback = ProjectileMovement->Velocity.GetSafeNormal() * 2000;
+			Player->LaunchCharacter(Knockback, true, true);
+			// our duty is fulfilled 
+			Destroy();
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Projectile hit actor: %s | Component: %s | No physics simulation"),
+				*OtherActor->GetName(), *OtherComp->GetName());
+		}
+
+
 	}
 }

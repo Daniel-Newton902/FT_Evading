@@ -114,6 +114,7 @@ public:
 
 	/** Ends the dash state */
 	void EndDash();
+	void InterruptDash();
 
 public:
 
