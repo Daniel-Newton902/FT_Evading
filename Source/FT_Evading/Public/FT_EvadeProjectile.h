@@ -28,7 +28,6 @@ class FT_EVADING_API AFT_EvadeProjectile : public AActor
 	UProjectileMovementComponent* ProjectileMovement;
 public:
 	int Damage;
-
 public:
 	AFT_EvadeProjectile();
 

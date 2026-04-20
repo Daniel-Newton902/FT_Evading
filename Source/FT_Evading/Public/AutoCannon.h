@@ -14,7 +14,6 @@ class FT_EVADING_API AAutoCannon : public AActor
 	GENERATED_BODY()
 private:
 	// i will use a simiple timer based ont he tick delta time
-	int delay = 5;
 	float timePassed = 0.0f;
 public:	
 	// Sets default values for this actor's properties
@@ -23,7 +22,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AutoCannon")
 	TSubclassOf <class AFT_EvadeProjectile> ProjectileToSpawn;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AutoCannon")
+	float delay = 5.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AutoCannon")
+	float rotation = 0.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AutoCannon")
 	UStaticMeshComponent* CannonMesh;
+
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

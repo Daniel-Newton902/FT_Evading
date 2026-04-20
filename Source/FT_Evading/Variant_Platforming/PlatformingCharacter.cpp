@@ -236,7 +236,7 @@ void APlatformingCharacter::DoDash()
 	// ignore the input if we've already dashed and have yet to reset
 	if (bHasDashed)
 		return;
-
+	GetCapsuleComponent()->SetCollisionProfileName(TEXT("Dodge")); //Changes the capsule collider attached to the player to the Dodge preset so it ignores any collider using the Projectie preset
 	// raise the dash flags
 	bIsDashing = true;
 	bHasDashed = true;
@@ -302,7 +302,7 @@ void APlatformingCharacter::EndDash()
 {
 	// restore gravity
 	GetCharacterMovement()->GravityScale = 2.5f;
-
+	GetCapsuleComponent()->SetCollisionProfileName(TEXT("Pawn")); //Changes the capsule collider attached to the player to the standard collider so it will ignore the projectile 
 	// reset the dashing flag
 	bIsDashing = false;
 

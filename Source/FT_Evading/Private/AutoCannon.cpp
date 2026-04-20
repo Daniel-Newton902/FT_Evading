@@ -24,7 +24,7 @@ void AAutoCannon::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	// add on time since last fram
+	// add on time since last frame
 	timePassed += DeltaTime;
 	if(timePassed >= delay)
 	{
@@ -41,6 +41,7 @@ void AAutoCannon::Shoot()
 	FRotator Rotation = GetActorRotation();
 	FActorSpawnParameters SpawnParams;
 	AFT_EvadeProjectile* Projectile = GetWorld()->SpawnActor<AFT_EvadeProjectile>(ProjectileToSpawn, Location, Rotation, SpawnParams);
+	AddActorLocalRotation(FRotator(0.f, rotation, 0.f));
 	//UE_LOG(LogTemp, Warning, TEXT("Pew Pew!"));
 }
 
